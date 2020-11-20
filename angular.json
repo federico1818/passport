@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "passport": {
+      "projectType": "library",
+      "root": "projects/passport",
+      "sourceRoot": "projects/passport/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/passport/tsconfig.lib.json",
+            "project": "projects/passport/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/passport/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/passport/src/test.ts",
+            "tsConfig": "projects/passport/tsconfig.spec.json",
+            "karmaConfig": "projects/passport/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/passport/tsconfig.lib.json",
+              "projects/passport/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "passport"
 }

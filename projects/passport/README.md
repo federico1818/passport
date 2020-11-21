@@ -4,7 +4,7 @@ An Angular library to connect with a Laravel application with Passport.
 
 ## Configuration
 
-1. Add oauth config to environments variable
+### 1. Add oauth config to environments variable
 
 Open ```/src/environments/environment.ts``` and add your oauth configuration.
 
@@ -24,7 +24,7 @@ export const environment = {
 }
 ```
 
-2. Setup @NgModule for the PassportModule
+### 2. Setup @NgModule for the PassportModule
 
 Open ```/src/app/app.module.ts```, inject the PassportModule, and specify your configuration.
 

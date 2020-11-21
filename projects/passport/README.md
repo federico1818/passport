@@ -1,24 +1,51 @@
 # Passport
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
+An Angular library to connect with a Laravel application with Passport.
 
-## Code scaffolding
+## Configuration
 
-Run `ng generate component component-name --project passport` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project passport`.
-> Note: Don't forget to add `--project passport` or else it will be added to the default project in your `angular.json` file. 
+1. Add oauth config to environments variable
 
-## Build
+Open ```/src/environments/environment.ts``` and add your oauth configuration.
 
-Run `ng build passport` to build the project. The build artifacts will be stored in the `dist/` directory.
+```ts
+export const environment = {
+    production: false,
+    oauth: {
+        /* `oauth_clients` table, column: `id` */
+        client_id: 'CLIENT_ID', 
+        
+        /* `oauth_clients` table, column: `secret` */
+        client_secret: 'CLIENT_SECRET', 
 
-## Publishing
+        /* Example: http://localhost:8000 */
+        url: 'URL'
+    }
+}
+```
 
-After building your library with `ng build passport`, go to the dist folder `cd dist/passport` and run `npm publish`.
+2. Setup @NgModule for the PassportModule
 
-## Running unit tests
+Open ```/src/app/app.module.ts```, inject the PassportModule, and specify your configuration.
 
-Run `ng test passport` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```ts
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { PassportModule } from '@federico1818/passport'
+import { environment } from 'src/environments/environment'
+import { AppComponent } from './app.component'
 
-## Further help
+@NgModule({
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        PassportModule.forRoot(environment.oauth)
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+export class AppModule { }
+```

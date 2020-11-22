@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http'
 
 import { Credentials } from '../models/credentials'
 import { ConfigService } from './config.service'
+import { TokenService } from './token.service'
+
+import { map } from 'rxjs/operators'
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +14,8 @@ import { ConfigService } from './config.service'
 export class OauthService {
     constructor(
         protected http: HttpClient,
-        protected configService: ConfigService
+        protected configService: ConfigService,
+        protected tokenService: TokenService
     ) {}
 
     public login(credentials: Credentials) {
@@ -24,6 +28,17 @@ export class OauthService {
             'username': credentials.email,
             'password': credentials.password,
             'scope': '*',
-        })
+        }).pipe(
+            map((res: any) => {
+                this.tokenService.token = res
+                return res
+            })
+        )
+    }
+
+    public register(form: any) {
+        const path = '/oauth/register'
+        
+        return this.http.post(`${ this.configService.url }${ path }`, form)
     }
 }

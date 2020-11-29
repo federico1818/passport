@@ -20,14 +20,14 @@ export class OauthService {
 
     public login(credentials: Credentials) {
         const path = '/oauth/token'
-        
-        return this.http.post(`${ this.configService.url }${ path }`, {
-            'grant_type': 'password',
-            'client_id': this.configService.client_id,
-            'client_secret': this.configService.client_secret,
-            'username': credentials.email,
-            'password': credentials.password,
-            'scope': '*',
+
+        return this.http.post(`${ this.configService.api_url }${ path }`, {
+            grant_type: 'password',
+            client_id: this.configService.client_id,
+            client_secret: this.configService.client_secret,
+            username: credentials.email,
+            password: credentials.password,
+            scope: '*',
         }).pipe(
             map((res: any) => {
                 this.tokenService.token = res
@@ -39,6 +39,6 @@ export class OauthService {
     public register(form: any) {
         const path = '/oauth/register'
         
-        return this.http.post(`${ this.configService.url }${ path }`, form)
+        return this.http.post(`${ this.configService.api_url }${ path }`, form)
     }
 }

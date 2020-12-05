@@ -6,6 +6,7 @@ import { ConfigService } from './config.service'
 import { TokenService } from './token.service'
 
 import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs'
 
 @Injectable({
     providedIn: 'root'
@@ -36,7 +37,7 @@ export class OauthService {
         )
     }
 
-    public register(form: any) {
+    public register(form: any): Observable<any> {
         const path = '/oauth/register'
         
         return this.http.post(`${ this.configService.api_url }${ path }`, form)

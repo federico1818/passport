@@ -1,16 +1,22 @@
 {
   "name": "@federico1818/passport",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "An Angular library to connect with a Laravel application with Passport",
   "repository": {
     "type": "git",
     "url": "https://github.com/federico1818/passport.git"
   },
+  "keywords": [
+    "angular",
+    "cookies",
+    "passport"
+  ],
   "peerDependencies": {
     "@angular/common": "^11.0.1",
     "@angular/core": "^11.0.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "ngx-cookie-service": "^10.1.1"
   }
 }

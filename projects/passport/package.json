@@ -1,6 +1,6 @@
 {
   "name": "@federico1818/passport",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An Angular library to connect with a Laravel application with Passport",
   "repository": {
     "type": "git",

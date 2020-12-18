@@ -19,9 +19,7 @@ export class OauthService {
         protected tokenService: TokenService
     ) {}
 
-    public login(credentials: Credentials) {
-        const path = '/oauth/token'
-
+    public login(credentials: Credentials, path: string = '/oauth/token') {
         return this.http.post(`${ this.configService.api_url }${ path }`, {
             grant_type: 'password',
             client_id: this.configService.client_id,
@@ -37,9 +35,8 @@ export class OauthService {
         )
     }
 
-    public register(form: any): Observable<any> {
-        const path = '/oauth/register'
-        
+    public register(form: any, path: string = '/oauth/register'): Observable<any> {
         return this.http.post(`${ this.configService.api_url }${ path }`, form)
     }
+ 
 }

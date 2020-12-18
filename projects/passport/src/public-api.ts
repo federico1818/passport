@@ -7,4 +7,5 @@ export * from './lib/passport.component'
 export * from './lib/passport.module'
 
 export * from './lib/services/oauth.service'
+export * from './lib/services/ui.service'
 export * from './lib/models/credentials'

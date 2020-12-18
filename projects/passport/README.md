@@ -49,3 +49,19 @@ import { AppComponent } from './app.component'
 
 export class AppModule { }
 ```
+
+## Laravel
+
+### Edit ```AuthServiceProvider```
+
+```php
+public function boot()
+{
+    $this->registerPolicies();
+
+    Passport::routes();
+    
+    Route::post('/oauth/register', '\App\Http\Controllers\Auth\RegisterController@register');
+    Route::post('/password/email', '\App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+}
+```

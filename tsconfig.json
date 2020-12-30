@@ -23,6 +23,10 @@
       "passport": [
         "dist/passport/passport",
         "dist/passport"
+      ],
+      "utils": [
+        "dist/utils/utils",
+        "dist/utils"
       ]
     }
   },
